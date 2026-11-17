@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#090609"><title>Только для тебя ❤️</title>
+<style>
+:root{--text:#fff1f4}*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:#090609;color:var(--text);font-family:Georgia,'Times New Roman',serif;overflow-x:hidden}
+#back{position:fixed;inset:0;background:radial-gradient(ellipse at 50% 42%,#310b19,#170811 43%,#090609 80%)}
+#hearts{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:1}
+.heart{position:absolute;bottom:-45px;color:#f02b55;opacity:0;animation:rise linear forwards;text-shadow:0 0 16px #f02b55}
+@keyframes rise{0%{transform:translateY(0) scale(.7);opacity:0}12%{opacity:.8}85%{opacity:.5}100%{transform:translateY(-115vh) rotate(30deg) scale(1.2);opacity:0}}
+main{position:relative;z-index:2}.screen{min-height:100svh;display:flex;align-items:center;justify-content:center;padding:34px 18px;text-align:center}
+.inner{width:min(100%,650px);animation:fade 1.1s ease both}.hidden{display:none!important}
+@keyframes fade{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+.kicker{font:11px Arial,sans-serif;letter-spacing:4px;text-transform:uppercase;color:#d98b9c;margin-bottom:24px}
+h1{font-size:clamp(35px,9vw,60px);font-weight:normal;line-height:1.12;margin:0 0 18px;text-shadow:0 0 30px #e21d4566}
+p{font-size:17px;line-height:1.75;color:#e0c0c8}
+button{border:1px solid #bd3151;background:linear-gradient(135deg,#a90e32,#5d0a20);color:#fff;border-radius:999px;padding:15px 30px;font-size:16px;box-shadow:0 0 28px #d0184544;cursor:pointer;margin-top:18px}
+.line{width:75px;height:1px;background:linear-gradient(90deg,transparent,#d72b50,transparent);margin:25px auto}
+.small{font:11px Arial,sans-serif;color:#a77c86;letter-spacing:2px;margin-top:26px}
+#story{padding:65px 18px 70px}.message{font-size:clamp(18px,4.5vw,23px);white-space:pre-line}
+.gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:28px auto;max-width:560px}
+.gallery img{width:100%;height:230px;object-fit:cover;border-radius:15px;border:1px solid #7e2039;box-shadow:0 10px 32px #0008}
+.gallery img:first-child{grid-column:1/-1;height:300px}
+.signature{color:#ff8ba3;font-style:italic;font-size:20px;margin-top:24px}
+#musicStatus{font:12px Arial,sans-serif;color:#d19aa7;margin-top:18px}
+@media(max-width:420px){.gallery img{height:180px}.gallery img:first-child{height:260px}}
+</style></head><body>
+<div id="back"></div><div id="hearts"></div><audio id="music" src="media/song.mp3" preload="auto" loop></audio>
+<main>
+<section class="screen" id="intro"><div class="inner">
+<div class="kicker">маленький сюрприз для тебя</div><h1>У меня для тебя<br>кое-что есть...</h1><div class="line"></div>
+<p>Я кое-что приготовил<br>с особенной мыслью о тебе.</p><button id="open">Открыть ❤️</button>
+<div class="small">СДЕЛАНО С ЛЮБОВЬЮ</div></div></section>
+<section class="screen hidden" id="story"><div class="inner">
+<div class="kicker">только для тебя</div><h1>Ты — моё<br>особенное ❤️</h1><div class="line"></div>
+<p class="message">Знаешь, я иногда просто смотрю на тебя и понимаю, насколько же мне повезло. ❤️
+
+Я очень рад, что однажды наши дороги пересеклись.
+Ты стала для меня очень близким и дорогим человеком.
+Мне нравится твоя улыбка, твой голос и даже самые маленькие мелочи в тебе.
+Рядом с тобой обычные моменты становятся особенными.
+Я хочу чаще видеть твою улыбку и делать всё, чтобы ты была счастлива.
+Я не обещаю, что всё всегда будет идеально, но обещаю стараться ради нас.
+Хочу вместе с тобой создавать воспоминания, которые мы будем вспоминать с улыбкой.
+Хочу обнимать тебя после тяжёлых дней и быть рядом, когда тебе это нужно.
+Спасибо тебе за тепло, нежность и за то, что ты есть в моей жизни.
+Ты для меня не просто девушка, ты человек, которого я очень ценю.
+Я люблю тебя и очень хочу, чтобы впереди у нас было ещё много прекрасных моментов.
+И если бы мне снова пришлось выбирать, я бы снова выбрал тебя. ❤️</p>
+<div class="gallery">
+<img src="media/photo-1.jpeg" alt="Наше фото 1"><img src="media/photo-2.jpeg" alt="Наше фото 2">
+<img src="media/photo-3.jpeg" alt="Наше фото 3"><img src="media/photo-4.jpeg" alt="Наше фото 4">
+<img src="media/photo-5.jpeg" alt="Наше фото 5"></div>
+<p>И это только начало нашей истории.</p><div class="signature">Я тебя очень ценю ❤️</div>
+<div id="musicStatus">♫ Нажми на кнопку, чтобы включить нашу песню</div>
+<button id="musicToggle">Включить музыку ♫</button><div class="small">НАША МАЛЕНЬКАЯ ИСТОРИЯ</div>
+</div></section></main>
+<script>
+const layer=document.getElementById('hearts');function addHeart(){const h=document.createElement('span');h.className='heart';h.textContent=Math.random()>.45?'♥':'♡';h.style.left=Math.random()*100+'%';h.style.fontSize=(13+Math.random()*24)+'px';h.style.animationDuration=(8+Math.random()*8)+'s';layer.appendChild(h);setTimeout(()=>h.remove(),17000)}
+for(let i=0;i<22;i++)setTimeout(addHeart,i*250);setInterval(addHeart,600);
+const intro=document.getElementById('intro'),story=document.getElementById('story'),audio=document.getElementById('music');
+function setMusic(on){document.getElementById('musicStatus').textContent=on?'♫ Сейчас играет наша песня':'♫ Музыка на паузе';document.getElementById('musicToggle').textContent=on?'Выключить музыку':'Включить музыку ♫'}
+document.getElementById('open').addEventListener('click',()=>{intro.classList.add('hidden');story.classList.remove('hidden');audio.play().then(()=>setMusic(true)).catch(()=>{document.getElementById('musicStatus').textContent='Нажми «Включить музыку», чтобы запустить песню.'})});
+document.getElementById('musicToggle').addEventListener('click',()=>{if(audio.paused)audio.play().then(()=>setMusic(true)).catch(()=>{document.getElementById('musicStatus').textContent='Не удалось запустить музыку. Попробуй ещё раз.'});else{audio.pause();setMusic(false)}});
+</script></body></html>
